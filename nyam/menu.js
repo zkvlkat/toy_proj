@@ -82,7 +82,7 @@ const rotate = () => {
         //결과 값을 html <div id> 담기
         if(count == 3){
         const resultElement = document.getElementById('result');
-        resultElement.textContent = '아니면 '+product[ran]+' 먹자 그냥';
+        resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
         button.style.display = 'none';
         button2.style.display = 'none';
         button3.style.display = 'none';
