@@ -79,11 +79,21 @@ const rotate = () => {
         
 
         //버튼 가져오기
-        if(!no_edit){
+        
         var button = document.getElementById('gogo');
         var button2 = document.getElementById('add');
         var button3 = document.getElementById('menuAdd');
+
+        //쿠키값 있으면 버튼 숨기기
+        if(no_edit){
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
+            button.style.display = 'none';
+            button2.style.display = 'none';
+            button3.style.display = 'none';
         }
+
+        
         button.addEventListener('click', function() {
             count++;
         
@@ -92,13 +102,13 @@ const rotate = () => {
         if(count == 3){
             setCookie('no_edit','1',1);
             //만약 no_edit 쿠키값이 1이면
-            if(getCookie('no_edit') == 1){
+            
                 const resultElement = document.getElementById('result');
                 resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
                 button.style.display = 'none';
                 button2.style.display = 'none';
                 button3.style.display = 'none';
-            }
+            
         }
     })
     },1);
