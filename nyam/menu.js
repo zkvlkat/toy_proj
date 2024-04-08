@@ -79,9 +79,11 @@ const rotate = () => {
         
 
         //버튼 가져오기
+        if(!no_edit){
         var button = document.getElementById('gogo');
         var button2 = document.getElementById('add');
         var button3 = document.getElementById('menuAdd');
+        }
         button.addEventListener('click', function() {
             count++;
         
