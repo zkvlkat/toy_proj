@@ -13,6 +13,14 @@ var no_edit = getCookie('no_edit');
 if(!no_edit){
     var count = 0;
 }
+//쿠키값 있으면 버튼 숨기기
+if(no_edit){
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
+    button.style.display = 'none';
+    button2.style.display = 'none';
+    button3.style.display = 'none';
+}
 
 
 //원 그리기
@@ -84,16 +92,9 @@ const rotate = () => {
         var button2 = document.getElementById('add');
         var button3 = document.getElementById('menuAdd');
 
-        //쿠키값 있으면 버튼 숨기기
-        if(no_edit){
-            const resultElement = document.getElementById('result');
-            resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
-            button.style.display = 'none';
-            button2.style.display = 'none';
-            button3.style.display = 'none';
-        }
-
         
+
+
         button.addEventListener('click', function() {
             count++;
         
