@@ -81,11 +81,15 @@ const rotate = () => {
         console.log(count);
         //결과 값을 html <div id> 담기
         if(count == 3){
-        const resultElement = document.getElementById('result');
-        resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
-        button.style.display = 'none';
-        button2.style.display = 'none';
-        button3.style.display = 'none';
+            setCookie('no_edit','1',1);
+            //만약 no_edit 쿠키값이 1이면
+            if(getCookie('no_edit') == 1){
+                const resultElement = document.getElementById('result');
+                resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
+                button.style.display = 'none';
+                button2.style.display = 'none';
+                button3.style.display = 'none';
+            }
         }
     })
     },1);
@@ -108,3 +112,20 @@ if(meunAdd.value != undefined && menuAdd.value != ""){
     }
 }
 newMake();
+
+
+//쿠키값 만들기
+function setCookie(name, value, exp){
+    var date = new Date();
+    date.setTime(date.getTime() + exp*24*60*60*1000);
+    document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+}
+//쿠키값 설정
+setCookie('no_edit','1',1)
+
+
+//쿠키값 가져오기,얻기
+function getCookie(name){
+    var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return value? value[2] : null;
+}
