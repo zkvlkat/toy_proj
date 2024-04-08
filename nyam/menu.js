@@ -16,7 +16,7 @@ var button2 = document.getElementById('add');
 var button3 = document.getElementById('menuAdd');
 
     var no_edit = getCookie('no_edit');
-checkCookie();
+
 function checkCookie(){
     if(no_edit === 1){
         const resultElement = document.getElementById('result');
@@ -26,7 +26,8 @@ function checkCookie(){
         button3.style.display = 'none';
     }
 }
-
+//checkCookie함수 호출
+checkCookie();
 
 
 
@@ -111,7 +112,8 @@ const rotate = () => {
         //결과 값을 html <div id> 담기
         if(count == 3){
             //쿠키값 설정
-            setCookie('no_edit','1',0.042)
+            setCookie('no_edit','1',0.042);
+            checkCookie();
             //만약 no_edit 쿠키값이 1이면
             
                 const resultElement = document.getElementById('result');
