@@ -19,6 +19,7 @@ var button3 = document.getElementById('menuAdd');
 
 function checkCookie(){
     if(no_edit === '1'){
+        console.log('there is a cookie');
         const resultElement = document.getElementById('result');
         resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
         button.style.display = 'none';
