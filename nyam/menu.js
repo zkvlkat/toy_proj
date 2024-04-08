@@ -8,9 +8,10 @@ const colors = ["#dc0936", "#e6471d", "#f7a416",
 "#be107f", "#e7167b"];
 const result = '';
 
-function checkCookie(){
-    var no_edit = getCookie('no_edit');
 
+
+    var no_edit = getCookie('no_edit');
+function checkCookie(){
     if(no_edit === 1){
         const resultElement = document.getElementById('result');
         resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
