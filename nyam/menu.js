@@ -7,8 +7,15 @@ const colors = ["#dc0936", "#e6471d", "#f7a416",
 "#169ed8", "#3f297e", "#87207b", 
 "#be107f", "#e7167b"];
 const result = '';
-//가져온 쿠키값을 변수 no_edit에 담기
-var no_edit = getCookie('no_edit');
+
+
+//버튼 가져오기
+var button = document.getElementById('gogo');
+var button2 = document.getElementById('add');
+var button3 = document.getElementById('menuAdd');
+
+
+
 //쿠키 값이 없으면 0으로 설정
 if(!no_edit){
     var count = 0;
@@ -84,21 +91,18 @@ const rotate = () => {
         $c.style.transform = `rotate(-${rotate}deg)`;
         $c.style.transition = `2s`;
         
-        
-
-        //버튼 가져오기
-        
-        var button = document.getElementById('gogo');
-        var button2 = document.getElementById('add');
-        var button3 = document.getElementById('menuAdd');
-
-        
+               
 
 
         button.addEventListener('click', function() {
             count++;
         
         console.log(count);
+
+        //가져온 쿠키값을 변수 no_edit에 담기
+        if(count==3){
+            var no_edit = getCookie('no_edit');
+        }
         //결과 값을 html <div id> 담기
         if(count == 3){
             setCookie('no_edit','1',1);
