@@ -16,6 +16,9 @@ var button2 = document.getElementById('add');
 var button3 = document.getElementById('menuAdd');
 
     var no_edit = getCookie('no_edit');
+    if(no_edit){
+
+    }
 
 function checkCookie(){
     if(no_edit === '1'){
@@ -27,9 +30,10 @@ function checkCookie(){
         button3.style.display = 'none';
     }
 }
-//checkCookie함수 호출
-checkCookie();
-
+//페이지가 호출될 때마다 checkCookie함수 호출
+window.onload = function() {
+    checkCookie();
+}
 
 
 
