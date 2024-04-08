@@ -7,7 +7,14 @@ const colors = ["#dc0936", "#e6471d", "#f7a416",
 "#169ed8", "#3f297e", "#87207b", 
 "#be107f", "#e7167b"];
 const result = '';
-var count = 0;
+//가져온 쿠키값을 변수 no_edit에 담기
+var no_edit = getCookie('no_edit');
+//쿠키 값이 없으면 0으로 설정
+if(!no_edit){
+    var count = 0;
+}
+
+
 //원 그리기
 const newMake = () => {
     const [cw,ch] = [$c.width / 2, $c.height / 2];
@@ -121,7 +128,7 @@ function setCookie(name, value, exp){
     document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
 }
 //쿠키값 설정
-setCookie('no_edit','1',1)
+setCookie('no_edit','1',0.042)
 
 
 //쿠키값 가져오기,얻기
