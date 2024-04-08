@@ -8,6 +8,17 @@ const colors = ["#dc0936", "#e6471d", "#f7a416",
 "#be107f", "#e7167b"];
 const result = '';
 
+function checkCookie(){
+    var no_edit = getCookie('no_edit');
+
+    if(no_edit === 1){
+        const resultElement = document.getElementById('result');
+        resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
+        button.style.display = 'none';
+        button2.style.display = 'none';
+        button3.style.display = 'none';
+    }
+}
 
 //버튼 가져오기
 var button = document.getElementById('gogo');
@@ -20,15 +31,6 @@ var button3 = document.getElementById('menuAdd');
 if(!no_edit){
     var count = 0;
 }
-//쿠키값 있으면 버튼 숨기기
-if(no_edit){
-    const resultElement = document.getElementById('result');
-    resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
-    button.style.display = 'none';
-    button2.style.display = 'none';
-    button3.style.display = 'none';
-}
-
 
 //원 그리기
 const newMake = () => {
@@ -100,12 +102,12 @@ const rotate = () => {
         console.log(count);
 
         //가져온 쿠키값을 변수 no_edit에 담기
-        if(count==3){
-            var no_edit = getCookie('no_edit');
-        }
+
+            
         //결과 값을 html <div id> 담기
         if(count == 3){
-            setCookie('no_edit','1',1);
+            //쿠키값 설정
+            setCookie('no_edit','1',0.042)
             //만약 no_edit 쿠키값이 1이면
             
                 const resultElement = document.getElementById('result');
@@ -144,8 +146,7 @@ function setCookie(name, value, exp){
     date.setTime(date.getTime() + exp*24*60*60*1000);
     document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
 }
-//쿠키값 설정
-setCookie('no_edit','1',0.042)
+
 
 
 //쿠키값 가져오기,얻기
