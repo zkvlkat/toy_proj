@@ -10,7 +10,13 @@ const result = '';
 
 
 
+//버튼 가져오기
+var button = document.getElementById('gogo');
+var button2 = document.getElementById('add');
+var button3 = document.getElementById('menuAdd');
+
     var no_edit = getCookie('no_edit');
+checkCookie();
 function checkCookie(){
     if(no_edit === 1){
         const resultElement = document.getElementById('result');
@@ -21,10 +27,7 @@ function checkCookie(){
     }
 }
 
-//버튼 가져오기
-var button = document.getElementById('gogo');
-var button2 = document.getElementById('add');
-var button3 = document.getElementById('menuAdd');
+
 
 
 
