@@ -15,12 +15,7 @@ var button = document.getElementById('gogo');
 var button2 = document.getElementById('add');
 var button3 = document.getElementById('menuAdd');
 
-    var no_edit = getCookie('no_edit');
-    if(no_edit){
-
-    }
-
-function checkCookie(){
+/*function checkCookie(){
     if(no_edit === '1'){
         console.log('there is a cookie');
         const resultElement = document.getElementById('result');
@@ -29,18 +24,35 @@ function checkCookie(){
         button2.style.display = 'none';
         button3.style.display = 'none';
     }
+}*/
+//세션이 있는지 확인하는 함수 호출
+checkSession();
+//checkSession함수 설정
+function checkSession(){
+    //세션값이 있으면
+    if(sessionStorage.getItem('no_edit')){
+        //세션값을 no_edit에 담기
+        no_edit = sessionStorage.getItem('no_edit');
+    }
+    //세션값이 있으면 버튼을 숨기기
+    if(no_edit){
+        const resultElement = document.getElementById('result');
+        resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
+        button.style.display = 'none';
+        button2.style.display = 'none';
+        button3.style.display = 'none';
+    }
 }
-//페이지가 호출될 때마다 checkCookie함수 호출
-window.onload = function() {
-    checkCookie();
-}
-
-
-
-//쿠키 값이 없으면 0으로 설정
+//세션값이 없으면 0으로 설정
 if(!no_edit){
     var count = 0;
 }
+
+//페이지가 호출될 때마다 checkCookie함수 호출
+/*window.onload = function() {
+    checkCookie();
+}*/
+
 
 //원 그리기
 const newMake = () => {
@@ -111,15 +123,13 @@ const rotate = () => {
         
         console.log(count);
 
-        //가져온 쿠키값을 변수 no_edit에 담기
-
             
         //결과 값을 html <div id> 담기
         if(count == 3){
-            //쿠키값 설정
-            setCookie('no_edit','1',0.042);
-            checkCookie();
-            //만약 no_edit 쿠키값이 1이면
+            //세션값 설정
+            setSession('no_edit','1');
+            checkSession();
+            //만약 no_edit 세션 값이 1이라면
             
                 const resultElement = document.getElementById('result');
                 resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
@@ -164,4 +174,10 @@ function setCookie(name, value, exp){
 function getCookie(name){
     var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
     return value? value[2] : null;
+}
+
+
+//세션 만들기
+function setSession(name, value){
+    sessionStorage.setItem(name, value);
 }
