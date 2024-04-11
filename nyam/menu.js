@@ -29,11 +29,8 @@ var button3 = document.getElementById('menuAdd');
 checkSession();
 //checkSession함수 설정
 function checkSession(){
-    //세션값이 있으면
-    if(sessionStorage.getItem('no_edit')){
-        //세션값을 no_edit에 담기
+    //세션값을 no_edit에 담기
         no_edit = sessionStorage.getItem('no_edit');
-    }
     //세션값이 있으면 버튼을 숨기기
     if(no_edit){
         const resultElement = document.getElementById('result');
