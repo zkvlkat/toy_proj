@@ -34,7 +34,6 @@ function checkSession(){
     //세션값이 있으면 버튼을 숨기기
     if(no_edit){
         const resultElement = document.getElementById('result');
-        resultElement.textContent = '아니면 '+product[ran]+' 가자 그냥';
         button.style.display = 'none';
         button2.style.display = 'none';
         button3.style.display = 'none';
