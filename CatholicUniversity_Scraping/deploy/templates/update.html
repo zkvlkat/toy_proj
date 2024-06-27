@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Render Templates Example</title>
+</head>
+
+<body>
+	<h1>가톨릭대학교> 대학생활 > 외부기관공지!</h1>
+	<h2>tag</h2>
+	- 보안 : ["취약점", "보안", "웹", "화이트해커", "사이버", "모의침투", "개발보안"]<br>
+	- 개발,인공지능 : ["프로그래밍", "개발", "SW", "Develop", "Developer", "AI", "인공지능", "A.I."]<br>
+	- 기타 : ["해커톤", "e스포츠", "e-스포츠", "아카데미", "Academy", "ICT", "클라우드", "cloud", "창업", "분석", "아이디어", "컨퍼런스", "IOT"]<br>
+	<h3>(정보)가톨릭대학교 외부기관공지는 정확히 '오늘'을 기준으로  1년치만 보관합니다.</h3>
+	<h4>현재 1~10page (약 30일간의 목록)을 출력하고 있습니다.</h4>
+
+	{% for key, info_list in data.items() %}
+	<h2>- {{ key }}</h2>
+    <ul>
+	    {% for info in info_list %}
+	    	<li>
+			<ul>
+				{% for item in info %}
+					<li>{{ item }}</li>
+				{% endfor %}
+			</ul>
+		</li>
+    {% endfor %}
+    </ul>
+    {% endfor %}
+</body>
+</html>
