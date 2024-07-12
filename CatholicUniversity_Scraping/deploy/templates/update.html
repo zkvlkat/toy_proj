@@ -1,34 +1,100 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Render Templates Example</title>
+    <style>
+        body {
+            font-family: 'Nanum Gothic', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+	h1,
+        h2,
+        h3,
+        h4 {
+            color: #2c3e50;
+        }
+
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .tag-group {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .tag-list {
+            font-style: italic;
+        }
+    </style>
 </head>
 
 <body>
-	<h1>가톨릭대학교> 대학생활 > 외부기관공지!</h1>
-	<h2>tag</h2>
-	- 보안 : ["취약점", "보안", "웹", "화이트해커", "사이버", "모의침투", "개발보안"]<br>
-	- 개발,인공지능 : ["프로그래밍", "개발", "SW", "Develop", "Developer", "AI", "인공지능", "A.I."]<br>
-	- 기타 : ["해커톤", "e스포츠", "e-스포츠", "아카데미", "Academy", "ICT", "클라우드", "cloud", "창업", "분석", "아이디어", "컨퍼런스", "IOT"]<br>
-	<h3>(정보)가톨릭대학교 외부기관공지는 정확히 '오늘'을 기준으로  1년치만 보관합니다.</h3>
-	<h4>현재 1~10page (약 30일간의 목록)을 출력하고 있습니다.</h4>
+    <h1>가톨릭대학교> 대학생활 > 외부기관공지!</h1>
+    <h2>tag</h2>
+    <div class="tag-group">
+        <div class="tag-title">보안:</div>
+        <div class="tag-list">["취약점", "보안", "웹", "화이트해커", "사이버", "모의침투", "개발보안"]</div>
+    </div>
+    <div class="tag-group">
+        <div class="tag-title"> - 개발,인공지능 :</div>
+        ["프로그래밍", "개발", "SW", "Develop", "Developer", "AI", "인공지능", "A.I."]
+    </div>
+    </div>
+    <div class="tag-group">
+        <div class="tag-title">기타 :</div>
+        <div class="tag-list">["해커톤", "e스포츠", "e-스포츠", "아카데미", "Academy", "ICT", "클라우드", "cloud", "창업", "분석", "아이디어",
+            "컨퍼런스", "IOT"]</div>
+    </div>
+    <h3>(정보)가톨릭대학교 외부기관공지는 정확히 '오늘'을 기준으로 1년치만 보관합니다.</h3>
+    <h4>현재 1~10page (약 30일간의 목록)을 출력하고 있습니다.</h4>
 
-	{% for key, info_list in data.items() %}
-	<h2>- {{ key }}</h2>
+    {% for key, info_list in data.items() %}
+    <h2>- {{ key }}</h2>
     <ul>
-	    {% for info in info_list %}
-	    	<li>
-			<ul>
-				{% for item in info %}
-					<li>{{ item }}</li>
-				{% endfor %}
-			</ul>
-		</li>
-    {% endfor %}
+        {% for info in info_list %}
+        <li>
+            <ul>
+                {% for item in info %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
     </ul>
     {% endfor %}
 </body>
+
 </html>
