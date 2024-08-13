@@ -1,6 +1,12 @@
 # 베이스 이미지로 Python 3.9 사용
 FROM python:3.9
 
+# 패키지 업데이트 및 vim 설치
+RUN apt-get update && \
+    apt-get install -y vim && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # 작업 디렉토리 설정
 WORKDIR /app
 
