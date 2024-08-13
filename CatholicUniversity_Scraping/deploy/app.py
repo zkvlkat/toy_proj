@@ -1,7 +1,5 @@
 from flask import Flask, request, jsonify, render_template
 import scraping
-import firebase_admin
-from firebase_admin import credentials
 
 app = Flask(__name__)
 
@@ -15,17 +13,18 @@ def update_info():
         ]
         data = {key:[] for key, _ in keywords_list}
         num = 1
-        for i in range(0, 91, 10):
+        for i in range(0, 91, 10): #30days data
             page_number = f"페이지{num}"
             url = f'https://www.catholic.ac.kr/ko/campuslife/notice_outside.do?mode=list&&articleLimit=10&article.offset={i}'
             for key, keywords in keywords_list:
                 temp_info = scraping.get_web_info(url,keywords)
-            if not temp_info:
-                temp_info = ['내용 없음']
-            temp_info.insert(0,page_number)
-            data[key].append(temp_info)
+#                if not temp_info:
+#                    temp_info = [('내용 없음', '#')]
+                temp_info.insert(0,(page_number, '#'))
+                data[key].append(temp_info)
             num += 1
         return render_template("update.html",data=data)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5000)
+    
