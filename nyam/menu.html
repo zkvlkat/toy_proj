@@ -1,25 +1,55 @@
-<html>
-    <head><title>meal menu</title>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="./menu.css">
-    <script src="http://code.jquery.com/jquery-3.6.3.min.js"></script>
-    </head>
-
-    <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="menu.css">
+    <title>돌림판</title>
+</head>
+<body>
+    <div class="container">
+        <h1>돌림판</h1>
         
-            <h1 align="center">메 뉴</h1>
-
-            <div id="addDiv">
-            <input type="text" id="menuAdd" class="inputs">
-            <button onclick="add()" id="add">메뉴추가</button><br>
-            <button onclick="rotate()" id="gogo" >ㄱㄱ</button>
+        <div class="flex-container">
+            <div class="controls">
+                <input type="text" id="menuAdd" class="inputs" placeholder="항목 입력">
+                <button onclick="add()" id="add">항목 추가</button>
+                <button id="nullButton">빈 룰렛 추가</button>
+                <button id="listButton">식당 룰렛 추가</button>
+                <button onclick="rotate()" id="gogo">돌리기</button>
+                <div id="result"></div>
             </div>
-            <div id="result">
-                </div>
             
-            <div id="menu">
-            <canvas width="500" height="500" id="canvass"></canvas>
+            <div class="roulette">
+                <canvas width="500" height="500" id="canvass"></canvas>
             </div>
-<script src="menu.js"></script>
-        </body>
+
+        </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script>
+        let currentScript = null;
+    
+        document.getElementById('nullButton').addEventListener('click', function() {
+            loadScript('menu.js');
+        });
+    
+        document.getElementById('listButton').addEventListener('click', function() {
+            loadScript('menu2.js');
+        });
+    
+        function loadScript(scriptName) {
+            if (currentScript) {
+                document.body.removeChild(currentScript);
+            }
+            const script = document.createElement('script');
+            script.src = scriptName;
+            script.onload = () => {
+                currentScript = script;
+            };
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
 </html>
